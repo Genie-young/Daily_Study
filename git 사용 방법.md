@@ -30,6 +30,15 @@
 
 4. 저장소 공유하기 - 다른 컴 
 
+   `  106  git clone https://github.com/Genie-young/Daily_Study.git                 
+   109  vi "test"                                                                
+   110  git add .                                                                
+   111  git commit                                                               
+   112  git push                                                                 
+                                                                     `
+
+   
+
    git clone 주소 복사, 붙여넣기 
 
    수정
