@@ -16,7 +16,7 @@ mainMenu.add_cascade(label="파일", menu=filemenu) # cascase는 아래로 확�
 editMenu= Menu(mainMenu)
 mainMenu.add_command(label="편집", menu=filemenu ,command=fileClick) # cascase는 아래로 확장 가능
 filemenu2= Menu(mainMenu)
-mainMenu.add_cascade(label="편집", menu=filemenu2) # cascase는 아래로 확장 가능
+mainMenu.add_cascade(label="편집", menu=filemenu2)
 
 
 moveMenu = Menu(mainMenu)

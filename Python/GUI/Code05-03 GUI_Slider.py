@@ -21,6 +21,7 @@ num = 0 # 현재 사진 순번
 ## 함수 선언부
 def keyPress(event) :
     global num
+    print(event)
     pressKey = chr(event.keycode)
     #messagebox.showinfo("키보드 이벤트","눌린 키 :"+chr(event.keycode))
     if(pressKey=="$") :
@@ -103,7 +104,8 @@ photo = PhotoImage(file = fnameList[num])
 pLabel = Label(window, image=photo)
 
 btnPrev = Button(window, text='<< 이전 그림', command=clickPrev)
-nameLabel = Label(window, text = fnames[num])
+tmp = os.path.split(fnameList[num])
+nameLabel = Label(window, text = tmp)
 btnNext = Button(window, text='다음 그림>>', command=clickNext)
 
 
