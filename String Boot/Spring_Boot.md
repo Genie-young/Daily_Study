@@ -40,9 +40,80 @@
 
 12. spring -boot-starter-web : 웹을 만드는데 사용하는 스타터(스프링 MVC, REST형, 임베디드 톰캣, 기타 라이브러리 포함)
 
-    
 
-     
+## [ 3 ] Spring boot test annotation
+
+- @SpringBootTest
+
+  통합 테스트를 제공하는 기본적인 스프링 부트 테스트 어노테이션. 설정을 임의로 변경 가능 && 여러 단위 테스트를 하나의 통합된 테스트로 수행 가능
+
+  객체 생성 방식 
+
+  1. @SpringBootTest의 속성 classes에 빈이 될 클래스 지정해주기. 
+
+  ```java
+  import org.junit.Test;
+  import org.junit.runner.RunWith;
+  import org.springframework.boot.test.context.SpringBootTest;
+  import org.springframework.test.context.junit4.SpringRunner;
+  //RunWith : JUnit에 내장된 러너 대신 정의된 러너 클래스를 사용 
+  @RunWith(SpringRunner.class) 
+  //@SpringBootTest는 항상 SpringJunit4ClassRunner를 상속받은 위의 RunWith가 필요함. !필수!
+  //클래스를 지정해주지 않으면 애플리케이션 상의 정의된 모든 빈 생성.
+  @SpringBootTest(classes = {ArticleServiceImpl.class, CommonConfig.class})
+  public class ApplicationTests {
+  	//ArticleServiceImpl.class에서 가져온 것
+      @Autowired
+      private ArticleServiceImpl articleServiceImpl;
+      @Test //contextLoads 메소드가 단위 테스트 대상 메소드임을 지정.
+  	public void contextLoads() {
+  	}
+  }
+  ```
+
+  2. @TestConfiguration : 기존의 Configuration을 커스터마이징 하고 싶은 경우
+
+  SpringBootTest의 classes 속성을 이용했을 경우에는 TestConfiguration은 감지되지 않음. ==> 이럴때는 classes 속성에 추가를 해주자! 
+
+  ```java
+  @RunWith(SpringRunner.class)
+  @SpringBootTest
+  public class TestConfigArticleServiceImplTest {
+      @TestConfiguration 
+      public static class TestConfig {
+          @Bean
+          public RestTemplate restTemplate() {
+              return new RestTemplate() { };
+          }
+      }
+  }
+  ```
+
+  3. @Import : classes 속성을 사용 하면서 동시에 import로 다른 빈을 생성함.
+
+  ```java
+  @RunWith(SpringRunner.class)
+  @SpringBootTest(classes = ArticleServiceImpl.class)
+  @Import(TestConfig.class) 
+  public class TestConfigArticleServiceImplTest {
+      @Test
+      public void test() {
+      //메소드 실행 내용
+      }
+  }
+  ```
+
+  추가 : MockBean
+
+  @MockBean을 사용해서 Mock 객체를 빈으로 등록 가능. 같은 객체는 한번만 등록함.  
+
+- @WebMvcTest
+
+- @DataJpaTest
+
+- @RestClientTest
+
+- @JsonTest
 
 ## [  ] @(annotation) 
 
