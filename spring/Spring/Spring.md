@@ -9,7 +9,7 @@
 - applicatino.properties 에 
 
   ```
-  logging.level.org.springframework.work.web=DEBUG
+  logging.level.org.springframework.web=DEBUG
   ```
 
   와 같이 설정하면 디버그 모드로 로그를 볼 수 있음.
