@@ -23,6 +23,7 @@ public class ImageSlider extends PagerAdapter {
     private Context context;
 
     /* 생성자 */
+
     public ImageSlider(Context context){
         this.context = context;
     }

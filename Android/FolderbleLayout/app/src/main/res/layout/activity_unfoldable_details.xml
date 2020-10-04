@@ -14,11 +14,11 @@
         android:padding="12dp"
         android:scrollbarStyle="outsideOverlay"
         android:scrollingCache="false" />
-
     <View
         android:id="@+id/touch_interceptor_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
 
     <LinearLayout
         android:id="@+id/details_layout"
@@ -30,7 +30,7 @@
         <ImageView
             android:id="@+id/details_image"
             android:layout_width="match_parent"
-            android:layout_height="320dp"
+            android:layout_height="200dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop" />
 
@@ -70,7 +70,6 @@
             android:textSize="14sp" />
 
     </LinearLayout>
-
     <com.alexvasilkov.foldablelayout.UnfoldableView
         android:id="@+id/unfoldable_view"
         android:layout_width="match_parent"
